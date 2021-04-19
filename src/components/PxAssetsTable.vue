@@ -41,7 +41,11 @@
 				<td>{{ a.priceUsd | dollar }}</td>
 				<td>{{ a.marketCapUsd | dollar }}</td>
 				<td
-					:class="a.changePercent24Hr.includes('-') ? 'text-red-600' : 'text-green-600'"
+					:class="
+						a.changePercent24Hr.includes('-')
+							? 'text-red-600'
+							: 'text-green-600'
+					"
 				>
 					{{ a.changePercent24Hr | percent }}
 				</td>
@@ -74,8 +78,8 @@ export default {
 	methods: {
 		goToCoin(id) {
 			this.$router.push({ name: "coin-detail", params: { id } })
-		}
-	}
+		},
+	},
 }
 </script>
 
