@@ -10,6 +10,27 @@ Vue.use(Router)
 
 export default new Router({
 	mode: "history",
+	scrollBehavior(to, from, savedPosition) {
+		if (savedPosition) {
+			return savedPosition
+		} else {
+			const position = {}
+
+			if (to.hash) {
+				position.selector = to.hash
+
+				if (to.hash === "#footer") {
+					position.offset = { y: 100 }
+				}
+
+				if (document.querySelector(to.hash)) {
+					return position
+				}
+
+				return false
+			}
+		}
+	},
 
 	routes: [
 		{
